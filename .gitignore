@@ -6,3 +6,6 @@
 
 ### VS Code ###
 .vscode/
+
+### OS Files (Mac) ###
+.DS_Store
