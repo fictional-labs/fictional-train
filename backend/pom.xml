@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <!-- Spring Boot가 미리 정의해 둔 설정(기본 라이브러리 버전, 플러그인 설정 등)을 상속받습니다.
@@ -70,6 +70,7 @@
   <!-- 자바 버전 설정 -->
   <properties>
     <java.version>21</java.version>
+    <mybatis.version>4.0.0</mybatis.version>
   </properties>
 
   <!-- 의존성 라이브러리 -->
@@ -91,7 +92,7 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>4.0.0</version>
+      <version>${mybatis.version}</version>
     </dependency>
 
     <!-- H2 데이터베이스 드라이버: 개발용 인메모리 DB -->
@@ -110,7 +111,7 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter-test</artifactId>
-      <version>4.0.0</version>
+      <version>${mybatis.version}</version>
       <scope>test</scope>
     </dependency>
 
