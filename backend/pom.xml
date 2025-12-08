@@ -1,74 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.w</groupId>
-	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>backend</name>
-	<description>backend</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
-	<properties>
-		<java.version>21</java.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-h2console</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>4.0.0</version>
-		</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter-test</artifactId>
-			<version>4.0.0</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+  <!-- Spring Boot가 미리 정의해 둔 설정(기본 라이브러리 버전, 플러그인 설정 등)을 상속받습니다.
+       덕분에 아래에서 라이브러리를 추가할 때 버전을 일일이 명시하지 않아도 호환되는 버전을 자동으로 가져옵니다. -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>4.0.0</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+  <!-- 프로젝트 개요 -->
+  <groupId>com.w</groupId>
+  <artifactId>backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>backend</name>
+  <description>just word relay</description>
+  <url>https://github.com/utact/fictional-train</url>
+
+  <!-- 라이선스 정보 -->
+  <licenses>
+
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+
+  </licenses>
+
+  <!-- 개발자 정보 -->
+  <developers>
+
+    <developer>
+      <id>utact</id>
+      <name>Yoo Seung-jun</name>
+      <email>dev.utact@gmail.com</email>
+      <roles>
+        <role>BE / FE</role>
+        <role>Architect</role>
+      </roles>
+      <timezone>+9</timezone>
+    </developer>
+
+    <developer>
+      <id>SoMin-Yoo</id>
+      <name>Yoo So-min</name>
+      <email>somin3994@gmail.com</email>
+      <roles>
+        <role>BE / FE</role>
+        <role>Architect</role>
+      </roles>
+      <timezone>+9</timezone>
+    </developer>
+
+  </developers>
+
+  <!-- 형상 관리 -->
+  <scm>
+    <connection/>
+    <developerConnection/>
+    <tag/>
+    <url/>
+  </scm>
+
+  <!-- 자바 버전 설정 -->
+  <properties>
+    <java.version>21</java.version>
+  </properties>
+
+  <!-- 의존성 라이브러리 -->
+  <dependencies>
+
+    <!-- H2 데이터베이스 콘솔을 사용하기 위한 설정 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-h2console</artifactId>
+    </dependency>
+
+    <!-- 웹 애플리케이션(MVC 패턴)을 만들기 위한 라이브러리: 내장 톰켓 서버 사용 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webmvc</artifactId>
+    </dependency>
+
+    <!-- MyBatis 프레임워크를 Spring Boot와 연동 -->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
+    <!-- H2 데이터베이스 드라이버: 개발용 인메모리 DB -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- 테스트 도구: 실제 서버를 띄우지 않고 컨트롤러나 DB 매퍼가 정상 작동하는지 검증하는 단위/통합 테스트를 지원 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webmvc-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter-test</artifactId>
+      <version>4.0.0</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <!-- 빌드 설정 -->
+  <build>
+
+    <!-- Spring Boot 전용 Maven 플러그인: 실행 가능한 JAR 파일로 패키징해줌 -->
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+  </build>
 
 </project>
