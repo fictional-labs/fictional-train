@@ -1,4 +1,4 @@
-package com.w.backend.config;
+package com.w.backend.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
         http
             .authorizeHttpRequests(
                 auth -> auth.requestMatchers("/", "/error").permitAll().anyRequest()

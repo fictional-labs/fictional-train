@@ -1,15 +1,32 @@
-package com.w.backend.user;
+package com.w.backend.domain.user.entity;
 
-public class Member {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class User {
+
+    @Id
+    private Long id;
     private String username;
     private String password;
     private String role;
 
-    public Member(String username, String password, String role) {
+    public User() {
+    }
+
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    public static User create(String username, String password) {
+        return new User(username, password, "USER");
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getUsername() {
@@ -24,6 +41,11 @@ public class Member {
         return role;
     }
 
+    public void setId(Long id) {
+
+        this.id = id;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -36,13 +58,4 @@ public class Member {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-            "username='" + username + '\'' +
-            ", password='" + password + '\'' +
-            ", role='" + role + '\'' +
-            '}';
-    }
-    
 }
