@@ -18,19 +18,15 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .headers(headers -> headers
                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                .anyRequest().authenticated())
-            .formLogin(form -> form
-                .successHandler((req, res, auth) -> res.setStatus(200))
-                .failureHandler((req, res, exc) -> res.setStatus(401))
-            );
-        
+                .requestMatchers(HttpMethod.POST, "/api/auth").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .anyRequest().authenticated());
         return http.build();
     }
 
