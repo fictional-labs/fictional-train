@@ -27,3 +27,7 @@ Content-Type: application/json
     client.global.set("new_access_token", response.body.accessToken);
     client.log("New Access Token: " + response.body.accessToken);
 %}
+
+### 로그아웃 테스트
+POST http://localhost:8080/api/auth/logout
+Authorization: Bearer {{access_token}}
