@@ -4,6 +4,8 @@ import com.w.backend.domain.auth.dto.RefreshToken;
 import com.w.backend.domain.auth.dto.TokenDto;
 import com.w.backend.domain.auth.dto.UserLoginRequest;
 import com.w.backend.domain.auth.mapper.RefreshTokenMapper;
+import com.w.backend.global.error.CustomException;
+import com.w.backend.global.error.ErrorCode;
 import com.w.backend.global.jwt.TokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -76,18 +78,18 @@ public class AuthService {
 
     private void validateRefreshToken(String token) {
         if (!tokenProvider.validateToken(token)) {
-            throw new RuntimeException("Refresh Token이 유효하지 않습니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
     }
 
     private RefreshToken getStoredRefreshToken(String key) {
         return refreshTokenMapper.findByKey(key)
-            .orElseThrow(() -> new RuntimeException("로그아웃 된 사용자입니다."));
+            .orElseThrow(() -> new CustomException(ErrorCode.REFRESH_TOKEN_NOT_FOUND));
     }
 
     private void validateTokenMatch(RefreshToken storedToken, String requestToken) {
         if (!storedToken.value().equals(requestToken)) {
-            throw new RuntimeException("토큰의 유저 정보가 일치하지 않습니다.");
+            throw new CustomException(ErrorCode.TOKEN_USER_MISMATCH);
         }
     }
 
