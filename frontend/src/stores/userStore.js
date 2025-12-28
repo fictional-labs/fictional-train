@@ -1,5 +1,5 @@
-import {defineStore} from "pinia";
-import {ref} from "vue";
+import { defineStore } from "pinia";
+import { ref } from "vue";
 import axios from "axios";
 
 export const useUserStore = defineStore('user', () => {
@@ -9,7 +9,7 @@ export const useUserStore = defineStore('user', () => {
 
   const login = async (loginObj) => {
     try {
-      await axios.post(`${BASE_URL}/api/auth`, loginObj);
+      await axios.post(`${BASE_URL}/api/auth/login`, loginObj);
 
       isLogin.value = true;
       loginUser.value = loginObj.username;
@@ -25,30 +25,30 @@ export const useUserStore = defineStore('user', () => {
 
   const logout = () => {
     axios.post(`${BASE_URL}/api/auth/logout`)
-    .then(() => {
-      isLogin.value = false;
-      loginUser.value = null;
-      alert("로그아웃 되었습니다.");
-    })
-    .catch((err) => {
-      console.error(err);
-      isLogin.value = false;
-      loginUser.value = null;
-    });
+      .then(() => {
+        isLogin.value = false;
+        loginUser.value = null;
+        alert("로그아웃 되었습니다.");
+      })
+      .catch((err) => {
+        console.error(err);
+        isLogin.value = false;
+        loginUser.value = null;
+      });
   }
 
   const createUser = (user) => {
 
     return axios.post(`${BASE_URL}/api/users`, user)
-    .then(() => {
-      alert("회원가입이 완료되었습니다.");
-      return true;
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("회원가입 실패");
-      throw err;
-    });
+      .then(() => {
+        alert("회원가입이 완료되었습니다.");
+        return true;
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("회원가입 실패");
+        throw err;
+      });
   };
 
   return {
