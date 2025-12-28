@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.w.backend.domain.auth.mapper.RefreshTokenMapper">
+
+    <insert id="save">
+        INSERT INTO refresh_token (rt_key, rt_value)
+        VALUES (#{key}, #{value})
+    </insert>
+    
+    <update id="update">
+        UPDATE refresh_token
+        SET rt_value = #{value}
+        WHERE rt_key = #{key}
+    </update>
+
+    <select id="findByKey" resultType="RefreshToken">
+        SELECT rt_key as "key", rt_value as "value"
+        FROM refresh_token
+        WHERE rt_key = #{key}
+    </select>
+
+    <delete id="deleteByKey">
+        DELETE FROM refresh_token
+        WHERE rt_key = #{key}
+    </delete>
+
+</mapper>

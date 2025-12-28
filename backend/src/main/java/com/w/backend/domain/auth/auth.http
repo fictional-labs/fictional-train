@@ -1,5 +1,5 @@
 ### 로그인 테스트
-POST http://localhost:8080/api/auth
+POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
@@ -7,5 +7,27 @@ Content-Type: application/json
   "password": "1234"
 }
 
-### 내 정보 조회 테스트 (로그인 때 받은 쿠키를 자동으로 들고 감)
-GET http://localhost:8080/api/users/me
+> {%
+    client.global.set("access_token", response.body.accessToken);
+    client.global.set("refresh_token", response.body.refreshToken);
+    client.log("Access Token: " + response.body.accessToken);
+    client.log("Refresh Token: " + response.body.refreshToken);
+%}
+
+### 토큰 재발급 테스트
+POST http://localhost:8080/api/auth/reissue
+Content-Type: application/json
+
+{
+  "accessToken": "{{access_token}}",
+  "refreshToken": "{{refresh_token}}"
+}
+
+> {%
+    client.global.set("new_access_token", response.body.accessToken);
+    client.log("New Access Token: " + response.body.accessToken);
+%}
+
+### 로그아웃 테스트
+POST http://localhost:8080/api/auth/logout
+Authorization: Bearer {{access_token}}

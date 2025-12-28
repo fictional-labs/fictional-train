@@ -6,3 +6,7 @@ Content-Type: application/json
   "username": "tester",
   "password": "1234"
 }
+
+### 내 정보 조회 테스트 (JWT 토큰 필요 - Auth login 먼저 실행)
+GET http://localhost:8080/api/users/me
+Authorization: Bearer {{access_token}}

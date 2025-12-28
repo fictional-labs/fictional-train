@@ -1,7 +1,9 @@
 package com.w.backend.domain.auth.service;
 
 import com.w.backend.domain.user.entity.User;
-import com.w.backend.domain.user.repository.UserRepository;
+import com.w.backend.domain.user.mapper.UserMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,18 +12,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-    public CustomUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private final UserMapper userMapper;
+
+    public CustomUserDetailsService(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username)
+        User user = userMapper.findByUsername(username)
             .orElseThrow(() -> {
-                System.out.println(">>>> [DEBUG] 예외 발생 위치: CustomUserDetailsService");
-                System.out.println(">>>> [DEBUG] 유저 확인 불가: " + username);
+                logger.warn("유저 확인 불가: {}", username);
                 return new UsernameNotFoundException("유저 확인 불가: " + username);
             });
         return org.springframework.security.core.userdetails.User.builder()

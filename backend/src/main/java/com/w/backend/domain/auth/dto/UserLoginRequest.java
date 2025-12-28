@@ -1,9 +1,9 @@
-package com.w.backend.domain.user.dto;
+package com.w.backend.domain.auth.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "회원가입 요청 DTO")
-public record UserJoinRequest(
+@Schema(description = "로그인 요청 DTO")
+public record UserLoginRequest(
     @Schema(description = "사용자 ID", example = "tester")
     String username,
 
