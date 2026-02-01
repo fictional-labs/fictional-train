@@ -1,4 +1,4 @@
-본 프로젝트는 **실시간성(Real-time)**과 **데이터 정합성(Consistency)**을 동시에 확보하기 위해, Event-Driven 방식과 Layered Architecture를 결합한 구조로 설계되었다.
+본 프로젝트는 **실시간성**(Real-time)과 **데이터 정합성**(Consistency)을 동시에 확보하기 위해, Event-Driven 방식과 Layered Architecture를 결합한 구조로 설계되었다.
 
 ### 1. 아키텍처 다이어그램 (Architecture Diagram)
 

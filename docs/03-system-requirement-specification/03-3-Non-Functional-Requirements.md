@@ -9,7 +9,7 @@
 ### [NFR-02] 동시성 및 데이터 무결성 (Concurrency)
 
 - **REQ-CONC-01**: 동일한 부모 노드에 대해 다수의 유저가 동시에 단어를 입력할 경우, **선착순 1명**의 요청만 처리되고 나머지는 반려되어야 한다. (Redis Distributed Lock 적용)
-- **REQ-CONC-02**: 스트림 탈취 발생 시, 기존 스트림의 상태 변경(Active -> Archived)과 새 스트림 생성이 **원자적(Atomic)**으로 처리되어야 한다.
+- **REQ-CONC-02**: 스트림 탈취 발생 시, 기존 스트림의 상태 변경(Active -> Archived)과 새 스트림 생성이 **원자적**(Atomic)으로 처리되어야 한다.
 
 ### [NFR-03] 보안 (Security)
 

@@ -1,6 +1,6 @@
 ### 1. 설계 개요 (Design Overview)
 
-본 프로젝트의 핵심인 **'Git 브랜치 스타일의 무한 확장 데이터'**와 **'실시간 스트림 탈취(Hijacking)'** 기능을 지원하기 위해, **정규화(Normalization)**와 **조회 성능(Read Performance)**의 균형을 맞춘 설계를 지향한다.
+본 프로젝트의 핵심인 '**Git 브랜치 스타일의 무한 확장 데이터**'와 **'실시간 스트림 탈취(Hijacking)'** 기능을 지원하기 위해, **정규화**(Normalization)와 **조회 성능**(Read Performance)의 균형을 맞춘 설계를 지향한다.
 
 - **설계 목표**:
     1. **트리 구조 최적화**: 수만 개의 노드가 얽힌 관계를 효율적으로 저장 및 조회 (Adjacency List Pattern 적용).
